@@ -1,12 +1,27 @@
 /*
  * General Styles
+ * Enhanced with new fonts, subtle shadows, and a clean background.
  */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     line-height: 1.6;
-    background-color: #f4f4f4; /* Light default background */
+    background-color: #e9ebee; /* A slightly more interesting light gray */
     color: #333;
+    transition: background-color 0.3s ease; /* Smooth transition for dark mode */
+}
+
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    text-align: center;
+    color: #2c3e50;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 1.1em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /*
@@ -16,25 +31,29 @@ body {
 .container {
     display: grid;
     grid-template-columns: 1fr; /* One column */
-    gap: 10px; /* 10px gap between rows and columns */
-    padding: 10px;
+    gap: 20px; /* Increased gap for better spacing */
+    padding: 20px;
 }
 
 .figure-card {
     background-color: #fff;
-    border: 2px solid #ccc;
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Smoothed corners */
     padding: 15px;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.figure-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
 }
 
 .figure-card img {
     width: 100%;
     height: auto;
-    border-radius: 5px;
-}
-
-.figure-card p {
-    font-size: 1.1em;
+    border-radius: 8px;
 }
 
 /*
@@ -44,6 +63,7 @@ body {
 @media (min-width: 772px) {
     .container {
         grid-template-columns: repeat(2, 1fr); /* Two columns */
+        gap: 25px; /* Adjust gap for tablet */
     }
 
     .figure-card {
@@ -63,14 +83,15 @@ body {
 @media (min-width: 992px) {
     .container {
         grid-template-columns: repeat(3, 1fr); /* Three columns */
+        gap: 30px; /* Adjust gap for large screens */
     }
 
     .figure-card {
-        border-radius: 0; /* Remove border-radius */
+        border-radius: 10px; /* Revert to subtle rounded corners */
     }
 
-    .figure-card:nth-of-type(3n-1) { /* Target every third figure (e.g., 2, 5, 8) */
-        grid-column: span 2; /* Make it span two columns */
+    .figure-card:nth-of-type(3n-1) {
+        grid-column: span 2;
     }
 }
 
@@ -80,7 +101,13 @@ body {
  */
 @media (prefers-reduced-motion: reduce) {
     html {
-        scroll-behavior: auto; /* Removes the smooth scrolling */
+        scroll-behavior: auto;
+    }
+    .figure-card {
+        transition: none; /* Disable transitions and animations */
+    }
+    .figure-card:hover {
+        transform: none; /* Disable hover transformations */
     }
 }
 
@@ -96,7 +123,8 @@ body {
 
     .figure-card {
         background-color: #1e1e1e;
-        color: #ffeb3b; /* A yellowish color for contrast */
-        border-color: #000;
+        color: #FFD700; /* Gold color for contrast */
+        border-color: #3e3e3e;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 }
